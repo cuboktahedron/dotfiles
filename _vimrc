@@ -5,6 +5,8 @@ set nocompatible
 filetype off
 
 set rtp+=~/dotfiles/vimfiles/vundle.git/
+set rtp+=~/dotfiles/vimfiles/
+set rtp+=~/dotfiles/vimfiles/after/
 call vundle#rc('~/dotfiles/vimfiles/bundle')
 
 "Vundle自身をVundleで管理
@@ -40,6 +42,9 @@ set showtabline=2
 noremap <Space>t :tabnew<CR>
 noremap <Space>o :e!<CR>
 
+" カレントディレクトリ移動 
+nnoremap <silent> <Space>cd :<C-u>CD<CR>
+
 "" neocomplcacheの設定
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -68,5 +73,3 @@ let g:netrw_list_hide = '.svn'
 let g:netrw_localcopycmd = "copy"
 noremap <SPACE>e :Explore<CR>
 
-" " Change current directory.
-" nnoremap <silent> <Space>cd :<C-u>CD<CR>
