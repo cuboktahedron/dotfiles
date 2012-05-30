@@ -25,6 +25,8 @@ Bundle 'JavaScript-syntax'
 Bundle 'pangloss/vim-javascript'
 Bundle 'javaScriptLint.vim'
 
+Bundle 'cuboktahedron/CD.vim'
+
 filetype plugin indent on 
 
 "" 一般設定
