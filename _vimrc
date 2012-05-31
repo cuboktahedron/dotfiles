@@ -15,7 +15,7 @@ Bundle 'gmarik/vundle'
 "Vundleで管理するプラグイン
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimshell'
+"Bundle 'Shougo/vimshell'
 "Bundle 'Shougo/vimproc'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
