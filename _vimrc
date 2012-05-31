@@ -23,7 +23,6 @@ Bundle 'majutsushi/tagbar'
 Bundle 'surround.vim'
 Bundle 'JavaScript-syntax'
 Bundle 'pangloss/vim-javascript'
-Bundle 'javaScriptLint.vim'
 
 Bundle 'cuboktahedron/CD.vim'
 

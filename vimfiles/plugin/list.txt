@@ -1,0 +1,9 @@
+-im_control.vim
+ Vim/GVimで「日本語入力固定モード」を使用する
+ https://sites.google.com/site/fudist/Home/vim-nihongo-ban/vim-japanese/ime-control
+
+-javaScriptLint.vim
+ v0.3のlint.vimが動かないので、とりあえず0.2を使用
+ 古いバージョンをBundleでとってくる方法あるのかな？
+ http://www.vim.org/scripts/script.php?script_id=2578
+ 
