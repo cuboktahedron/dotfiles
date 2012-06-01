@@ -79,3 +79,10 @@ noremap <SPACE>e :Explore<CR>
 inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
 " PythonによるIBus制御指定
 let IM_CtrlIBusPython = 1
+
+"" insert時に矢印がABCDになる問題の回避
+imap OA <Up>
+imap OB <Down>
+imap OC <Right>
+imap OD <Left>
+
