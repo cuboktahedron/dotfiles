@@ -1,4 +1,4 @@
-gi
-set transparency=220
+set guifont=Osaka－等幅\ 14
+set columns=100
+set lines=52
 colorscheme desert
-
