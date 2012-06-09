@@ -86,3 +86,5 @@ imap OB <Down>
 imap OC <Right>
 imap OD <Left>
 
+inoremap '' ''<Left>
+inoremap "" ""<Left>
