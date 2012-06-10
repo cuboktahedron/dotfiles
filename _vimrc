@@ -75,10 +75,10 @@ let g:netrw_localcopycmd = "copy"
 noremap <SPACE>e :Explore<CR>
 
 "" im_controlの設定
-" 「日本語入力固定モード」切替キー
-inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
-" PythonによるIBus制御指定
-let IM_CtrlIBusPython = 1
+if !has('gui_running')
+  " PythonによるIBus制御指定(コマンドモードに戻ったときにIMEをoffにする)
+  let IM_CtrlIBusPython = 1
+endif
 
 "" insert時に矢印がABCDになる問題の回避
 imap OA <Up>
