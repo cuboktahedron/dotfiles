@@ -1,4 +1,5 @@
 set guifont=Osaka－等幅\ 14
-set columns=100
+set columns=150
 set lines=52
 colorscheme desert
+
