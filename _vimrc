@@ -4,29 +4,36 @@ set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
 set nocompatible
 filetype off
 
-set rtp+=~/dotfiles/vimfiles/vundle.git/
-set rtp+=~/dotfiles/vimfiles/
-set rtp+=~/dotfiles/vimfiles/after/
-call vundle#rc('~/dotfiles/vimfiles/bundle')
+if has('vim_starting')
+  if has('win32' || 'win64')
+    set rtp+=$VIM/vimfiles/bundle/bundle/
+    call vundle#rc('$VIM/vimfiles/bundle')
+  else
+    set rtp+=~/dotfiles/vimfiles/vundle.git/
+    set rtp+=~/dotfiles/vimfiles/
+    set rtp+=~/dotfiles/vimfiles/after/
+    call neobundle#rc('~/dotfiles/vimfiles/bundle')
+  endif
+endif
 
-"Vundle自身をVundleで管理
-Bundle 'gmarik/vundle'
+"neobundle自身をneobundleで管理
+NeoBundle 'Shougo/neobundle.vim'
 
 "Vundleで管理するプラグイン
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimshell'
-Bundle 'Shougo/vimproc'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
-Bundle 'majutsushi/tagbar'
-Bundle 'surround.vim'
-Bundle 'JavaScript-syntax'
-Bundle 'pangloss/vim-javascript'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'surround.vim'
+NeoBundle 'JavaScript-syntax'
+NeoBundle 'pangloss/vim-javascript'
 
-Bundle 'cuboktahedron/CD.vim'
+NeoBundle 'cuboktahedron/CD.vim'
 
-filetype plugin indent on 
+filetype plugin indent on
 
 "" 一般設定
 "タグファイルのファイル名
