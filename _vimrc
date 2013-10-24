@@ -5,14 +5,13 @@ set nocompatible
 filetype off
 
 if has('vim_starting')
-  if has('win32' || 'win64')
-    set rtp+=$VIM/vimfiles/bundle/bundle/
-    call vundle#rc('$VIM/vimfiles/bundle')
+echo 
+  if has('win32') || has('win64')
+    set runtimepath+=$VIM/vimfiles/bundle/neobundle.vim/
+    call neobundle#rc('$VIM/vimfiles/bundle')
   else
-    set rtp+=~/dotfiles/vimfiles/vundle.git/
-    set rtp+=~/dotfiles/vimfiles/
-    set rtp+=~/dotfiles/vimfiles/after/
-    call neobundle#rc('~/dotfiles/vimfiles/bundle')
+    set runtimepath+=~/dotfiles/vimfiles/neobundle.vim/
+    call neobundle#rc(expand('$VIM/vimfiles/bundle'))
   endif
 endif
 
