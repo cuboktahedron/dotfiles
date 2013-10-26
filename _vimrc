@@ -31,6 +31,7 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'surround.vim'
+NeoBundle 'fuenor/im_control.vim'
 
 NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
@@ -85,17 +86,27 @@ let g:netrw_list_hide = '.svn'
 let g:netrw_localcopycmd = "copy"
 noremap <SPACE>e :Explore<CR>
 
+" 「日本語入力固定モード」の動作設定
+let IM_CtrlMode = 1
+
+" GVimの時だけ「日本語入力固定モード」の vi協調モードを無効化
+let IM_vi_CooperativeMode = has('gui_running') ? 0 : 1
+
 "" im_controlの設定
 if !has('gui_running')
   " PythonによるIBus制御指定(コマンドモードに戻ったときにIMEをoffにする)
   let IM_CtrlIBusPython = 1
 endif
 
-"" insert時に矢印がABCDになる問題の回避
-imap OA <Up>
-imap OB <Down>
-imap OC <Right>
-imap OD <Left>
+" ESC実行後のIME自動切替を早くする設定
+set timeout timeoutlen=1000 ttimeoutlen=100
+
+" insert時に矢印がABCDになる問題の回避（以下が設定されているとttimeoutlenの設
+" 定がきかないのでコメントアウト）
+"imap OA <Up>
+"imap OB <Down>
+"imap OC <Right>
+"imap OD <Left>
 
 inoremap '' ''<Left>
 inoremap "" ""<Left>
