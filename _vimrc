@@ -22,7 +22,9 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/vimproc'
+if has('unix')
+  NeoBundle 'Shougo/vimproc'
+endif
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'majutsushi/tagbar'
