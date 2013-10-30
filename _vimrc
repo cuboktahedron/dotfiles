@@ -32,6 +32,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'surround.vim'
 NeoBundle 'fuenor/im_control.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
@@ -61,7 +62,7 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 "" neocomplcacheの設定
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_camel_case_compgletion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_dictionary_filetype_lists = {
   \ 'default'    : '',
@@ -110,3 +111,44 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 
 inoremap '' ''<Left>
 inoremap "" ""<Left>
+
+" コマンド履歴を開く
+nnoremap <F5> <Esc>q:
+nnoremap q: <Nop>
+
+" 検索履歴を開く
+nnoremap <F6> <Esc>q/
+nnoremap q/ <Nop>
+nnoremap q? <Nop>
+
+" indent-guidesプラグインの設定
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_color_change_percent = 20
+let g:indent_guides_guide_size = 2
+
+nnoremap <ESC><ESC> :nohlsearch<CR>
+
+nnoremap <silent> <Space>eev  :<C-u>edit $MYVIMRC<CR>
+nnoremap <silent> <Space>eeg  :<C-u>edit $MYGVIMRC<CR>
+
+" _vimrc、_gvimrc編集時に自動で再読み込みさせる設定
+augroup MyAutoCmd
+    autocmd!
+augroup END
+
+if !has('gui_running') && !(has('win32') || has('win64'))
+    " .vimrcの再読込時にも色が変化するようにする
+    autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+else
+    " .vimrcの再読込時にも色が変化するようにする
+    autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
+                \if has('gui_running') | source $MYGVIMRC
+    autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
+endif
+
+" 矩形選択で文字がないところにもカーソルを移動できるようにする
+set virtualedit=block
+
+" インデント変更後も選択状態とする
+vnoremap < <gv
+vnoremap > >gv
