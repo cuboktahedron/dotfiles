@@ -32,7 +32,6 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'surround.vim'
 NeoBundle 'fuenor/im_control.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
@@ -120,11 +119,6 @@ nnoremap q: <Nop>
 nnoremap <F6> <Esc>q/
 nnoremap q/ <Nop>
 nnoremap q? <Nop>
-
-" indent-guidesプラグインの設定
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_color_change_percent = 20
-let g:indent_guides_guide_size = 2
 
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
