@@ -149,6 +149,9 @@ endif
 " 矩形選択で文字がないところにもカーソルを移動できるようにする
 set virtualedit=block
 
+" 行の折り返しをしないようにする
+set nowrap
+
 " インデント変更後も選択状態とする
 vnoremap < <gv
 vnoremap > >gv
