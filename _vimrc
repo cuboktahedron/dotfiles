@@ -4,29 +4,44 @@ set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
 set nocompatible
 filetype off
 
-set rtp+=~/dotfiles/vimfiles/vundle.git/
-set rtp+=~/dotfiles/vimfiles/
-set rtp+=~/dotfiles/vimfiles/after/
-call vundle#rc('~/dotfiles/vimfiles/bundle')
+if has('vim_starting')
+echo 
+  if has('win32') || has('win64')
+    set backupdir=$VIM/vimfiles/backup
+    set runtimepath+=$VIM/vimfiles/bundle/neobundle.vim/
+    call neobundle#rc('$VIM/vimfiles/bundle')
+  else
+    set backupdir=~/dotfiles/vimfiles/backup
+    set runtimepath+=~/dotfiles/vimfiles/neobundle.vim/
+    call neobundle#rc(expand('$VIM/vimfiles/bundle'))
+  endif
+endif
 
-"Vundle自身をVundleで管理
-Bundle 'gmarik/vundle'
+"neobundle自身をneobundleで管理
+NeoBundle 'Shougo/neobundle.vim'
 
 "Vundleで管理するプラグイン
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimshell'
-Bundle 'Shougo/vimproc'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
-Bundle 'majutsushi/tagbar'
-Bundle 'surround.vim'
-Bundle 'JavaScript-syntax'
-Bundle 'pangloss/vim-javascript'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimshell'
+if has('unix')
+  NeoBundle 'Shougo/vimproc'
+endif
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'surround.vim'
+NeoBundle 'fuenor/im_control.vim'
+NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'kien/ctrlp.vim'
 
-Bundle 'cuboktahedron/CD.vim'
+NeoBundle 'JavaScript-syntax'
+NeoBundle 'pangloss/vim-javascript'
 
-filetype plugin indent on 
+NeoBundle 'cuboktahedron/CD.vim'
+
+filetype plugin indent on
 
 "" 一般設定
 "タグファイルのファイル名
@@ -49,7 +64,7 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 "" neocomplcacheの設定
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_camel_case_compgletion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_dictionary_filetype_lists = {
   \ 'default'    : '',
@@ -74,17 +89,90 @@ let g:netrw_list_hide = '.svn'
 let g:netrw_localcopycmd = "copy"
 noremap <SPACE>e :Explore<CR>
 
+" 「日本語入力固定モード」の動作設定
+let IM_CtrlMode = 1
+
+" GVimの時だけ「日本語入力固定モード」の vi協調モードを無効化
+let IM_vi_CooperativeMode = has('gui_running') ? 0 : 1
+
 "" im_controlの設定
 if !has('gui_running')
   " PythonによるIBus制御指定(コマンドモードに戻ったときにIMEをoffにする)
   let IM_CtrlIBusPython = 1
 endif
 
-"" insert時に矢印がABCDになる問題の回避
-imap OA <Up>
-imap OB <Down>
-imap OC <Right>
-imap OD <Left>
+" ESC実行後のIME自動切替を早くする設定
+set timeout timeoutlen=1000 ttimeoutlen=100
+
+" insert時に矢印がABCDになる問題の回避（以下が設定されているとttimeoutlenの設
+" 定がきかないのでコメントアウト）
+"imap OA <Up>
+"imap OB <Down>
+"imap OC <Right>
+"imap OD <Left>
 
 inoremap '' ''<Left>
 inoremap "" ""<Left>
+
+" コマンド履歴を開く
+nnoremap <F5> <Esc>q:
+nnoremap q: <Nop>
+
+" 検索履歴を開く
+nnoremap <F6> <Esc>q/
+nnoremap q/ <Nop>
+nnoremap q? <Nop>
+
+nnoremap <ESC><ESC> :nohlsearch<CR>
+
+nnoremap <silent> <Space>eev  :<C-u>edit $MYVIMRC<CR>
+nnoremap <silent> <Space>eeg  :<C-u>edit $MYGVIMRC<CR>
+
+" _vimrc、_gvimrc編集時に自動で再読み込みさせる設定
+augroup MyAutoCmd
+    autocmd!
+augroup END
+
+if !has('gui_running') && !(has('win32') || has('win64'))
+    " .vimrcの再読込時にも色が変化するようにする
+    autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+else
+    " .vimrcの再読込時にも色が変化するようにする
+    autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
+                \if has('gui_running') | source $MYGVIMRC
+    autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
+endif
+
+" 矩形選択で文字がないところにもカーソルを移動できるようにする
+set virtualedit=block
+
+" 行の折り返しをしないようにする
+set nowrap
+
+" インデント変更後も選択状態とする
+vnoremap < <gv
+vnoremap > >gv
+
+
+"" over.vimの設定
+" over.vimの起動
+nnoremap <silent> <Space>m :OverCommandLine<CR>
+
+" カーソル下の単語をハイライト付きで置換
+nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+
+" コピーした文字列をハイライト付きで置換
+nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
+
+"" yankround.vimの設定
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+
+" 履歴取得数
+let g:yankround_max_history = 50
+
+" 履歴一覧(kien/ctrlp.vim)
+nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
+
