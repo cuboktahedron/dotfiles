@@ -12,8 +12,8 @@ echo
     call neobundle#rc('$VIM/vimfiles/bundle')
   else
     set backupdir=~/dotfiles/vimfiles/backup
-    set runtimepath+=~/dotfiles/vimfiles/neobundle.vim/
-    call neobundle#rc(expand('$VIM/vimfiles/bundle'))
+    set runtimepath+=~/dotfiles/vimfiles/bundle/neobundle.vim/
+    cal neobundle#rc(expand('~/dotfiles/vimfiles/bundle'))
   endif
 endif
 
