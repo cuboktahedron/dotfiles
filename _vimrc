@@ -13,7 +13,9 @@ echo
   else
     set backupdir=~/dotfiles/vimfiles/backup
     set runtimepath+=~/dotfiles/vimfiles/bundle/neobundle.vim/
-    cal neobundle#rc(expand('~/dotfiles/vimfiles/bundle'))
+    call neobundle#begin(expand('~/dotfiles/vimfiles/bundle'))
+    NeoBundleFetch 'Shougo/neobundle.vim'
+    call neobundle#end()
   endif
 endif
 
@@ -38,6 +40,7 @@ NeoBundle 'kien/ctrlp.vim'
 
 NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'Yggdroot/indentLine'
 
 NeoBundle 'cuboktahedron/CD.vim'
 
