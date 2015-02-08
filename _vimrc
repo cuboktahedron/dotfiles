@@ -176,3 +176,8 @@ let g:yankround_max_history = 50
 " 履歴一覧(kien/ctrlp.vim)
 nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
 
+set tabstop=2
+set autoindent
+set expandtab
+set shiftwidth=2
+
