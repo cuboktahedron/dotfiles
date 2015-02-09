@@ -9,7 +9,9 @@ echo
   if has('win32') || has('win64')
     set backupdir=$VIM/vimfiles/backup
     set runtimepath+=$VIM/vimfiles/bundle/neobundle.vim/
-    call neobundle#rc('$VIM/vimfiles/bundle')
+    call neobundle#begin(expand('$VIM/vimfiles/bundle'))
+    NeoBundleFetch 'Shougo/neobundle.vim'
+    call neobundle#end()
   else
     set backupdir=~/dotfiles/vimfiles/backup
     set runtimepath+=~/dotfiles/vimfiles/bundle/neobundle.vim/
