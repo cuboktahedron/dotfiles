@@ -5,21 +5,19 @@ set nocompatible
 filetype off
 
 if has('vim_starting')
-echo 
   if has('win32') || has('win64')
     set backupdir=$VIM/vimfiles/backup
     set runtimepath+=$VIM/vimfiles/bundle/neobundle.vim/
-    call neobundle#begin(expand('$VIM/vimfiles/bundle'))
-    NeoBundleFetch 'Shougo/neobundle.vim'
-    call neobundle#end()
+    let bundledir=expand('$VIM/vimfiles/bundle')
   else
     set backupdir=~/dotfiles/vimfiles/backup
     set runtimepath+=~/dotfiles/vimfiles/bundle/neobundle.vim/
-    call neobundle#begin(expand('~/dotfiles/vimfiles/bundle'))
-    NeoBundleFetch 'Shougo/neobundle.vim'
-    call neobundle#end()
+    let bundledir='~/dotfiles/vimfiles/bundle/'
   endif
 endif
+
+call neobundle#begin($bundledir)
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 "neobundle自身をneobundleで管理
 NeoBundle 'Shougo/neobundle.vim'
@@ -41,11 +39,13 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'kien/ctrlp.vim'
 
-NeoBundle 'JavaScript-syntax'
+NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'Yggdroot/indentLine'
 
 NeoBundle 'cuboktahedron/CD.vim'
+
+call neobundle#end()
 
 filetype plugin indent on
 
