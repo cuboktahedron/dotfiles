@@ -16,7 +16,7 @@ if has('vim_starting')
   endif
 endif
 
-call neobundle#begin($bundledir)
+call neobundle#begin(bundledir)
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 "neobundle自身をneobundleで管理
