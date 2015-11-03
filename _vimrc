@@ -188,3 +188,4 @@ set autoindent
 set expandtab
 set shiftwidth=2
 
+syntax on
