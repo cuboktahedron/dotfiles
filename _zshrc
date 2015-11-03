@@ -65,3 +65,6 @@ alias la='ls -A'
 alias l='ls -CF'
 alias vi='vim'
 
+alias ghci='stack ghci'
+alias runghc='stack runghc'
+alias ghc='stack ghc'
