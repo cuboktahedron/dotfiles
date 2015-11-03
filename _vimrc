@@ -42,7 +42,8 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'Yggdroot/indentLine'
-
+NeoBundle 'itchyny/vim-haskell-indent'
+NeoBundle 'vim-scripts/haskell.vim'
 NeoBundle 'cuboktahedron/CD.vim'
 
 call neobundle#end()
