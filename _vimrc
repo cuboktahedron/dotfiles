@@ -27,7 +27,7 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimshell'
 if has('unix')
-"  NeoBundle 'Shougo/vimproc'
+  NeoBundle 'Shougo/vimproc'
 endif
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'thinca/vim-ref'
