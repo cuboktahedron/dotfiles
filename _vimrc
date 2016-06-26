@@ -21,8 +21,8 @@ if has('win32') || has('win64')
     source $VIM/_vimrc.local
   endif
 else
-  if filereadable(expand('~/_vimrc.local'))
-    source ~/_vimrc.local
+  if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
   endif
 endif
 
