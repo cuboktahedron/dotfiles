@@ -68,9 +68,6 @@ noremap <Space>o :e!<CR>
 " カレントディレクトリ移動 
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
-" vimrcを開く
-nnoremap <space>. :<c-u>tabedit $MYVIMRC<CR>
-
 "" neocomplcacheの設定
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -135,8 +132,8 @@ nnoremap q? <Nop>
 
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
-nnoremap <silent> <Space>eev  :<C-u>edit $MYVIMRC<CR>
-nnoremap <silent> <Space>eeg  :<C-u>edit $MYGVIMRC<CR>
+" vimrc
+nnoremap <silent> <Space>.  :<C-u>edit $MYVIMRC<CR>
 
 " _vimrc、_gvimrc編集時に自動で再読み込みさせる設定
 augroup MyAutoCmd
