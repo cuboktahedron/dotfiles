@@ -16,6 +16,16 @@ if has('vim_starting')
   endif
 endif
 
+if has('win32') || has('win64')
+  if filereadable(expand('$VIM/_vimrc.local'))
+    source $VIM/_vimrc.local
+  endif
+else
+  if filereadable(expand('~/_vimrc.local'))
+    source ~/_vimrc.local
+  endif
+endif
+
 call neobundle#begin(bundledir)
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -45,6 +55,12 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'itchyny/vim-haskell-indent'
 NeoBundle 'vim-scripts/haskell.vim'
 NeoBundle 'cuboktahedron/CD.vim'
+
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'cuboktahedron/evervim'
+
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
 
 call neobundle#end()
 
@@ -187,5 +203,13 @@ set tabstop=2
 set autoindent
 set expandtab
 set shiftwidth=2
+
+nnoremap <Space>el :EvervimNotebookList<CR>
+nnoremap <Space>es :EvervimSearchByQuery<Space>
+nnoremap <Space>ec :EvervimCreateNote<CR>
+nnoremap <Space>et :EvervimListTags<CR>
+
+" markdownの折り畳みをしない
+let g:vim_markdown_folding_disabled=1
 
 syntax on
