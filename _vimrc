@@ -78,7 +78,11 @@ set cursorline
 "タブエディタ化
 set showtabline=2
 
-noremap <Space>t :tabnew<CR>
+" タブ関連のショートカット
+noremap <Space>tn :tabnew<CR>
+noremap <Space>tq :tabclose<CR>
+
+
 noremap <Space>o :e!<CR>
 
 " カレントディレクトリ移動 
