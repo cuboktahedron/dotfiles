@@ -68,6 +68,9 @@ noremap <Space>o :e!<CR>
 " カレントディレクトリ移動 
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
+" vimrcを開く
+nnoremap <space>. :<c-u>tabedit $MYVIMRC<CR>
+
 "" neocomplcacheの設定
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
