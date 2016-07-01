@@ -15,3 +15,4 @@ build:
 	ln -s ~/dotfiles/_gvimrc ~/.gvimrc
 	ln -s ~/dotfiles/_zshrc ~/.zshrc
 
+	mkdir -p ~/dotfiles/vimfiles/backup
